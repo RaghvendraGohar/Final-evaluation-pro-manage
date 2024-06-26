@@ -1,0 +1,130 @@
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .card {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+  }
+  
+  .priority {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .priorityIndicator {
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .heroSection {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .checklistContainer {
+    margin-top: 20px;
+  }
+  
+  .checklist {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .checklistItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .checklistItem input {
+    margin-right: 10px;
+  }
+  
+  .dueDate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dueDateIndicator {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      margin: 20px auto;
+      padding: 10px;
+    }
+  
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .logo {
+      margin-bottom: 10px;
+    }
+  
+    .heroSection {
+      font-size: 1.2em;
+    }
+  
+    .checklist {
+      max-height: 150px;
+    }
+  
+    .dueDateIndicator {
+      padding: 5px 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .priorityIndicator {
+      height: 8px;
+      width: 8px;
+    }
+  
+    .heroSection {
+      font-size: 1em;
+    }
+  
+    .checklist {
+      max-height: 100px;
+    }
+  
+    .dueDateIndicator {
+      padding: 3px 5px;
+      font-size: 0.9em;
+    }
+  }
+  

@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  width: 224px;
+  height: 100vh;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 20px; */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarHeader {
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.sidebarHeading {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
+
+.sidebarMenu {
+  width: 100%;
+  align-items: center;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  margin: 10px 0;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #707070;
+}
+
+.sidebarItem:hover {
+  background-color: #e0e0e0;
+}
+
+.sidebarIcon {
+  margin-right: 10px;
+  font-size: 1.2em;
+  width: 24px;
+  height: 24px;
+}
+
+.logoutButton {
+  margin-top: auto;
+  width: 100%;
+  padding: 15px;
+  font-size: 1em;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #CF3636;
+}
+
+.logoutIcon {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+.contentH{
+  font-family: Open Sans;
+font-size: 22px;
+font-weight: 600;
+line-height: 29.96px;
+text-align: left;
+color: #000000;
+}

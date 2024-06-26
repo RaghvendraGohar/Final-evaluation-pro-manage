@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .column {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px;
+  }
+  
+  .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .dot {
+    height: 10px;
+    width: 10px;
+    background-color: #7ed6df;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .count {
+    font-weight: bold;
+    margin-left: auto;
+  }
+  
