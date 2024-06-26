@@ -19,7 +19,8 @@ export default function Analytics() {
     const fetchTasks = async () => {
       try {
         const userId = localStorage.getItem('userId');
-        const response = await getTasksByUser(userId);
+        const email = localStorage.getItem('email');
+        const response = await getTasksByUser(userId,email);
         setTasks(response);
       } catch (error) {
         console.error("Error fetching tasks:", error);

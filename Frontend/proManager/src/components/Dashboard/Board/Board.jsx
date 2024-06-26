@@ -102,8 +102,8 @@ export default function Board() {
   const toggleCollapseContainer = (title) => {
     setCollapsedContainers(prev => ({
       ...prev,
-      [title]: !prev[title]
-    }));
+      [title]: !prev[title] 
+        }));
   };
 
   const deleteTask = async (taskId) => {

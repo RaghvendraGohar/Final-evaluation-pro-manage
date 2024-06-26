@@ -1,48 +1,61 @@
-import React from 'react'
-import styles from "./PublicLink.module.css"
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getTasksByshareLink } from '../../api/task'; // Adjust the path as per your project structure
+import styles from "./PublicLink.module.css";
 import codesandbox from "../../assets/codesandbox.png";
 
+const PublicLink = () => {
+  const { id } = useParams();
+  const [task, setTask] = useState(null);
 
-export default function PublicLink() {
-    const checklistItems = [
-        { id: 1, text: 'Done Task', completed: true },
-        { id: 2, text: 'Task to be done', completed: false },
-        { id: 3, text: 'Task to be done', completed: false },
-        { id: 4, text: 'Task to be done', completed: false },
-        { id: 5, text: 'Task to be done', completed: false },
-        { id: 6, text: 'Task to be done', completed: false },
-        { id: 7, text: 'Task to be done', completed: false },
-        { id: 8, text: 'Lorem ipsum dolor sit amet consectetur. Sem duis morbi elementum sagittis placerat proin aliquet sem.', completed: false },
-      ];
-    
-      return (
-        <div className={styles.container}>
-          <div className={styles.header}>
-          <img src={codesandbox} alt="codesandbox" className={styles.sidebarIcon} />
-            <h1>Pro Manage</h1>
+  useEffect(() => {
+    const fetchTask = async () => {
+      try {
+        const taskData = await getTasksByshareLink(id);
+        setTask(taskData);
+      } catch (error) {
+        console.error('Error fetching task:', error);
+      }
+    };
+
+    fetchTask();
+  }, [id]);
+
+  if (!task) {
+    return <div>Loading...</div>; // Add a loading state or spinner
+  }
+
+  // Render task details
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <img src={codesandbox} alt="codesandbox" className={styles.sidebarIcon} />
+        <h1>Pro Manage</h1>
+      </div>
+      <div className={styles.card}>
+        <div className={styles.priority}>
+          <span className={styles.priorityIndicator}></span>
+          <span>{task.priority}</span>
+        </div>
+        <h2 className={styles.heroSection}>{task.title}</h2>
+        <div className={styles.checklistContainer}>
+          <h3>Checklist ({task.checklist.filter(item => item.checked).length}/{task.checklist.length})</h3>
+          <div className={styles.checklist}>
+            {task.checklist.map(item => (
+              <label key={item._id} className={styles.checklistItem}>
+                <input type="checkbox" checked={item.checked} readOnly />
+                {item.text}
+              </label>
+            ))}
           </div>
-          <div className={styles.card}>
-            <div className={styles.priority}>
-              <span className={styles.priorityIndicator}></span>
-              <span>HIGH PRIORITY</span>
-            </div>
-            <h2 className={styles.heroSection}>Hero section</h2>
-            <div className={styles.checklistContainer}>
-              <h3>Checklist (1/12)</h3>
-              <div className={styles.checklist}>
-                {checklistItems.map(item => (
-                  <label key={item.id} className={styles.checklistItem}>
-                    <input type="checkbox" checked={item.completed} readOnly />
-                    {item.text}
-                  </label>
-                ))}
-              </div>
-              <div className={styles.dueDate}>
-                <span>Due Date</span>
-                <span className={styles.dueDateIndicator}>Feb 10th</span>
-              </div>
-            </div>
+          <div className={styles.dueDate}>
+            <span>Due Date</span>
+            <span className={styles.dueDateIndicator}>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No due date'}</span>
           </div>
         </div>
-      );
-}
+      </div>
+    </div>
+  );
+};
+
+export default PublicLink;

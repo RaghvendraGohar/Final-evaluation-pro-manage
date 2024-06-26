@@ -13,7 +13,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/public" element={<PublicLink />} />
+          <Route path="/public/:id" element={<PublicLink />} />
         </Routes>
       </BrowserRouter>
     </>

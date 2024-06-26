@@ -14,6 +14,15 @@ export const getTasksByUser = async (userId, email) => {
   }
 };
 
+export const getTasksByshareLink = async (shareLink) => {
+  try {
+      const response = await axios.get(`${backendUrl}/sharelink/${shareLink}`);
+      return response.data;
+    }catch (error) {
+  throw error;
+}
+};
+
 export const createTask = async (taskData, token) => {
   try {
     const response = await axios.post(`${backendUrl}/create`, taskData, {

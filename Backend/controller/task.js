@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Task from '../modals/task.js';
+import Counter from '../modals/counter.js';
 
 export const createTask = async (req, res) => {
     try {
@@ -17,6 +18,9 @@ export const createTask = async (req, res) => {
       if (!validPriorities.includes(priority)) {
         return res.status(400).json({ message: 'Invalid priority value.' });
       }
+
+      const sequenceValue = await getNextSequenceValue('taskShareLink');
+      const shareLink = `ET-${sequenceValue.toString().padStart(4, '0')}`;
   
       const newTask = new Task({
         title,
@@ -24,9 +28,9 @@ export const createTask = async (req, res) => {
         assignUserId: assignUserId ? new mongoose.Types.ObjectId(assignUserId) : null,
         checklist,
         dueDate: dueDate ? new Date(dueDate) : null,
-        status: 'Backlog', // Default status
+        status: 'To do', // Default status
         taskAdminUserId: req.currentUserId, // Set to the logged-in user ID from the middleware
-        shareLink: null,
+        shareLink: shareLink,
       });
   
       // Save the task to the database
@@ -38,6 +42,16 @@ export const createTask = async (req, res) => {
       res.status(500).json({ message: 'Server error. Please try again later.' });
     }
   };
+
+const getNextSequenceValue = async (sequenceName) => {
+    const sequenceDocument = await Counter.findOneAndUpdate(
+      { name: sequenceName },
+      { $inc: { value: 1 } },
+      { new: true, upsert: true }
+    );
+    return sequenceDocument.value;
+};
+  
 
   export const updateTask = async (req, res) => {
     try {
@@ -145,3 +159,27 @@ export const getTasksByUser = async (req, res) => {
         res.status(500).json({ message: 'Server error. Please try again later.' });
     }
 };  
+
+export const getTaskByShareLink = async (req, res) => {
+  try {
+    const { shareLink } = req.params;
+
+    // Validate if the shareLink is provided
+    if (!shareLink) {
+      return res.status(400).json({ message: 'Share link is required.' });
+    }
+
+    // Find the task by shareLink
+    const task = await Task.findOne({ shareLink });
+
+    // If the task is not found
+    if (!task) {
+      return res.status(404).json({ message: 'Task not found.' });
+    }
+
+    res.status(200).json(task);
+  } catch (error) {
+    console.error('Error fetching task by shareLink:', error);
+    res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};

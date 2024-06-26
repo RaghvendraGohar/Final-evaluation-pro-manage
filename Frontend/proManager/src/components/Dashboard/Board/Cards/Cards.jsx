@@ -77,6 +77,15 @@ const Cards = ({ card, moveCard, deleteTask, isChecklistExpanded: isChecklistExp
     }
   };
 
+  const copyToClipboard = (text) => {
+    text = "http://localhost:5173/public/"+text;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Share link copied to clipboard');
+    }).catch((err) => {
+      console.error('Failed to copy: ', err);
+    });
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
@@ -86,7 +95,7 @@ const Cards = ({ card, moveCard, deleteTask, isChecklistExpanded: isChecklistExp
         {isMenuOpen && (
           <div className={styles.menuPopup} ref={menuRef}>
             <button onClick={() => { closeMenu(); openTaskModal(card); }}>Edit</button>
-            <button onClick={() => { closeMenu(); /* Add share functionality */ }}>Share</button>
+            <button onClick={() => { closeMenu(); copyToClipboard(card.shareLink); }}>Share</button>
             <button onClick={openModal}>Delete</button>
           </div>
         )}
