@@ -78,7 +78,7 @@ const Cards = ({ card, moveCard, deleteTask, isChecklistExpanded: isChecklistExp
   };
 
   const copyToClipboard = (text) => {
-    text = "http://localhost:5173/public/"+text;
+    text = "final-evaluation-pro-manage-k5xh8lvuc.vercel.app/public/"+text;
     navigator.clipboard.writeText(text).then(() => {
       alert('Share link copied to clipboard');
     }).catch((err) => {
