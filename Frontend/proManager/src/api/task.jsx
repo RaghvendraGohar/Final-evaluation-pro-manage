@@ -1,7 +1,7 @@
 // src/api/taskApi.js
 import axios from 'axios';
 
-const backendUrl = 'http://localhost:8000/api/v1/task';
+const backendUrl = 'https://final-evaluation-pro-manage.onrender.com/api/v1/task';
 
 export const getTasksByUser = async (userId, email) => {
     try {

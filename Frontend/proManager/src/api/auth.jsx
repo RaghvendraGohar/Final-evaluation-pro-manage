@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const backendUrl = 'http://localhost:8000/api/v1/auth';
+const backendUrl = 'https://final-evaluation-pro-manage.onrender.com/api/v1/auth';
 
 // Register User
 export const registerUser = async (name, email, password) => {
