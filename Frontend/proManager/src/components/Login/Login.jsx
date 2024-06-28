@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../api/auth"; // Adjust the path as necessary
+import { loginUser } from "../../api/auth"; 
 import styles from "./Login.module.css";
 import astronaut from "../../assets/Art.png";
+import mail from "../../assets/email.png";
+import lock from "../../assets/lock.png";
+import hide from "../../assets/hide.png";
+import see from "../../assets/see.png";
 
 export default function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,6 +31,10 @@ export default function LogIn() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.leftSide}>
@@ -37,6 +46,7 @@ export default function LogIn() {
         <h2 className={styles.title}>Login</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
+            <img src={mail} alt="mail" className={styles.icons} />
             <input
               type="email"
               name="email"
@@ -48,8 +58,9 @@ export default function LogIn() {
             />
           </div>
           <div className={styles.inputGroup}>
+            <img src={lock} alt="lock" className={styles.icons} />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               required
@@ -57,17 +68,22 @@ export default function LogIn() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <img
+              src={showPassword ? hide : see}
+              alt={showPassword ? "Hide password" : "Show password"}
+              className={styles.icon1}
+              onClick={togglePasswordVisibility}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
-          <button type="submit" className={styles.registerButton}>
+          <button type="submit" className={styles.loginButton}>
             Log in
           </button>
-          
           <p className={styles.loginText}>Have no account yet?</p>
-          
-          <button type="button" className={styles.loginButton} onClick={() => navigate('/register')}>
-            Register
-          </button>
         </form>
+        <button type="button" className={styles.registerButton} onClick={() => navigate('/register')}>
+          Register
+        </button>
       </div>
     </div>
   );
