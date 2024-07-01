@@ -133,7 +133,6 @@ color: #CF3636;
 }
 
 .cardTitle::after {
-  content: '...';
   position: absolute;
   top: 0;
   padding: 0 5px;
