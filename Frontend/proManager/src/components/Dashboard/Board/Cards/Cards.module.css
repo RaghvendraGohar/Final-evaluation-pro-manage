@@ -129,6 +129,10 @@ text-align: left;
   margin: 10px 0;
 }
 
+.cardTitle:hover .tooltip {
+  display: block;
+}
+
 .tooltip {
   display: none;
   position: absolute;
