@@ -157,7 +157,7 @@ const Cards = ({
         )}
       </div>
       <div className={styles.cardTitle} title={card.title}>
-        {card.title.length > 16 ? (
+      {card.title.length > 16 ? (
           <>
             {card.title.substring(0, 16)}
             <span className={styles.tooltip}>{card.title}</span>
