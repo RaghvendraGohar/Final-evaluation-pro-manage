@@ -203,6 +203,7 @@ export default function AddTaskModal({ closeModal, taskToEdit }) {
           <label>
             Checklist ({checklist.filter((item) => item.done).length}/
             {checklist.length})
+            <span className={styles.required}>*</span>
           </label>
           <div className={styles.checklist}>
             {checklist.map((item, index) => (
