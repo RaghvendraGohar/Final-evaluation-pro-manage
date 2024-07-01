@@ -156,7 +156,16 @@ const Cards = ({
           </div>
         )}
       </div>
-      <div className={styles.cardTitle}>{card.title}</div>
+      <div className={styles.cardTitle} title={card.title}>
+        {card.title.length > 16 ? (
+          <>
+            {card.title.substring(0, 16)}
+            <span className={styles.tooltip}>{card.title}</span>
+          </>
+        ) : (
+          card.title
+        )}
+      </div>
       <div className={styles.cardChecklist}>
         Checklist ({card.checklist.filter((item) => item.checked).length}/
         {card.checklist.length})
