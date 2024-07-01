@@ -129,6 +129,23 @@ text-align: left;
   margin: 10px 0;
 }
 
+.tooltip {
+  display: none;
+  position: absolute;
+  top: -30px; /* Adjust as needed */
+  left: 0;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  z-index: 100;
+}
+
 .cardChecklist {
   display: flex;
   justify-content: space-between;
