@@ -60,7 +60,7 @@ const PublicLink = () => {
             <h3>Checklist ({task.checklist.filter(item => item.checked).length}/{task.checklist.length})</h3>
             <div className={styles.checklist}>
               {task.checklist.map(item => (
-                <label key={item._id} className={styles.checklistItem}>
+               <label key={item._id} className={styles.checklistItem}>
                   <input type="checkbox" checked={item.checked} readOnly />
                   {item.text}
                 </label>
