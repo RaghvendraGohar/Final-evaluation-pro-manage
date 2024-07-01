@@ -194,6 +194,10 @@ margin-right: 2%;
     max-height: 150px;
   }
 
+  .checklistItem{
+    margin-left: 1%;
+  }
+
   .dueDateIndicator {
     padding: 5px 8px;
   }
