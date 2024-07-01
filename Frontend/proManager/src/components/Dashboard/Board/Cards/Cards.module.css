@@ -135,16 +135,14 @@ color: #CF3636;
 .cardTitle::after {
   content: '...';
   position: absolute;
-  right: 0;
   top: 0;
-  background: white;
   padding: 0 5px;
   z-index: 1;
 }
 
-/* .cardTitle:hover::after {
+.cardTitle:hover::after {
   content: ''; 
-} */
+}
 
 .cardTitle:hover .tooltip {
   display: block;
