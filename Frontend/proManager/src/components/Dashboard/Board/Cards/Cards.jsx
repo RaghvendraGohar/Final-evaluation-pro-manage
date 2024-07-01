@@ -94,7 +94,7 @@ const Cards = ({
   };
 
   const copyToClipboard = (text) => {
-    text = "localhost:5173/public/" + text;
+    text = "https://final-evaluation-pro-manage.vercel.app/public/" + text;
     navigator.clipboard
       .writeText(text)
       .then(() => {
