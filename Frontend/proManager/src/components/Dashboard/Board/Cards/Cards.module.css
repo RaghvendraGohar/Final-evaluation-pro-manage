@@ -142,9 +142,9 @@ color: #CF3636;
   z-index: 1;
 }
 
-.cardTitle:hover::after {
-  content: ''; /* Remove dots on hover */
-}
+/* .cardTitle:hover::after {
+  content: ''; 
+} */
 
 .cardTitle:hover .tooltip {
   display: block;
