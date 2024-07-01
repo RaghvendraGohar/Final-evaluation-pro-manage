@@ -139,9 +139,9 @@ color: #CF3636;
   z-index: 1;
 }
 
-.cardTitle:hover::after {
+/* .cardTitle:hover::after {
   content: ''; 
-}
+} */
 
 .cardTitle:hover .tooltip {
   display: block;
