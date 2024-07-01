@@ -8,7 +8,11 @@ import DateFilter from "./DateFilter/DateFilter";
 import collapseIcon from "../../../assets/collapseIcon.png";
 import plusIcon from "../../../assets/plusIcon.png";
 import { getLoggedInUserId } from "../../../utils/auth";
-import { getTasksByUser, deleteTask as deleteTaskApi, updateTask as updateTaskApi } from "../../../api/task";
+import {
+  getTasksByUser,
+  deleteTask as deleteTaskApi,
+  updateTask as updateTaskApi,
+} from "../../../api/task";
 
 export default function Board() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,14 +22,14 @@ export default function Board() {
   const [tasks, setTasks] = useState([]);
   const [collapsedContainers, setCollapsedContainers] = useState({});
   const [taskToEdit, setTaskToEdit] = useState(null);
-  const [filter, setFilter] = useState('This Week');
-  const token = localStorage.getItem('token');
+  const [filter, setFilter] = useState("This Week");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const userId = getLoggedInUserId();
-        const userEmail = localStorage.getItem('email'); // Assuming you store the email in localStorage
+        const userEmail = localStorage.getItem("email"); // Assuming you store the email in localStorage
         const fetchedTasks = await getTasksByUser(userId, userEmail);
         setTasks(fetchedTasks);
       } catch (error) {
@@ -44,7 +48,9 @@ export default function Board() {
   const closeTaskModal = (newTask) => {
     if (newTask) {
       if (taskToEdit) {
-        setTasks(tasks.map(task => task._id === newTask._id ? newTask : task));
+        setTasks(
+          tasks.map((task) => (task._id === newTask._id ? newTask : task))
+        );
       } else {
         setTasks([...tasks, newTask]);
       }
@@ -72,16 +78,20 @@ export default function Board() {
   const getCurrentDate = () => {
     const today = new Date();
     const day = today.getDate();
-    const month = today.toLocaleString('default', { month: 'short' });
+    const month = today.toLocaleString("default", { month: "short" });
     const year = today.getFullYear();
 
     const nth = (d) => {
-      if (d > 3 && d < 21) return 'th';
+      if (d > 3 && d < 21) return "th";
       switch (d % 10) {
-        case 1: return 'st';
-        case 2: return 'nd';
-        case 3: return 'rd';
-        default: return 'th';
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
       }
     };
 
@@ -92,23 +102,25 @@ export default function Board() {
     const updatedTask = { ...card, status: newContainer };
     try {
       await updateTaskApi(card._id, { status: newContainer }, token);
-      setTasks(tasks.map(task => task._id === card._id ? updatedTask : task));
+      setTasks(
+        tasks.map((task) => (task._id === card._id ? updatedTask : task))
+      );
     } catch (error) {
       console.error("Error updating task status:", error);
     }
   };
 
   const toggleCollapseContainer = (title) => {
-    setCollapsedContainers(prev => ({
+    setCollapsedContainers((prev) => ({
       ...prev,
-      [title]: !prev[title] 
-        }));
+      [title]: !prev[title],
+    }));
   };
 
   const deleteTask = async (taskId) => {
     try {
       await deleteTaskApi(taskId);
-      setTasks(tasks.filter(task => task._id !== taskId));
+      setTasks(tasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -120,36 +132,38 @@ export default function Board() {
     const futureWeek = new Date();
     const pastMonth = new Date();
     const futureMonth = new Date();
-    
+
     pastWeek.setDate(today.getDate() - 7);
     futureWeek.setDate(today.getDate() + 7);
     pastMonth.setDate(today.getDate() - 30);
     futureMonth.setDate(today.getDate() + 30);
-  
-    return tasks.filter(task => {
-      const dueDate = task.dueDate ? new Date(task.dueDate) : null;
-  
-      if (filter === 'Today') {
-        return dueDate && dueDate.toDateString() === today.toDateString();
+
+    return tasks.filter((task) => {
+      const createdDate = task.createdDate ? new Date(task.createdDate) : null;
+
+      if (filter === "Today") {
+        return createdDate && createdDate.toDateString() === today.toDateString();
       }
-  
-      if (filter === 'This Week') {
-        return dueDate && dueDate >= pastWeek && dueDate <= futureWeek;
+
+      if (filter === "This Week") {
+        return createdDate && createdDate >= pastWeek && createdDate <= futureWeek;
       }
-  
-      if (filter === 'This Month') {
-        return dueDate && dueDate >= pastMonth && dueDate <= futureMonth;
+
+      if (filter === "This Month") {
+        return createdDate && createdDate >= pastMonth && createdDate <= futureMonth;
       }
-  
+
       // Include tasks with no due date
-      return !dueDate;
+      return !createdDate;
     });
   };
 
   return (
     <>
       <div className={styles.dateDisplay}>{getCurrentDate()}</div>
-      <div className={styles.welcomeHeading}>Welcome! {localStorage.getItem('userName')}</div>
+      <div className={styles.welcomeHeading}>
+        Welcome! {localStorage.getItem("userName")}
+      </div>
       <div className={styles.headConatiner}>
         <h1>Board</h1>
         <div>
@@ -162,7 +176,8 @@ export default function Board() {
             Add People
           </div>
         </div>
-        <DateFilter setFilter={setFilter} /> {/* Pass setFilter to DateFilter component */}
+        <DateFilter setFilter={setFilter} />{" "}
+        {/* Pass setFilter to DateFilter component */}
       </div>
 
       <div className={styles.boardContainer}>
@@ -179,19 +194,35 @@ export default function Board() {
                     onClick={() => openTaskModal(null)}
                   />
                 )}
-                <button className={styles.expandChecklist} onClick={() => toggleCollapseContainer(title)}>
-                  <img 
-                    src={collapseIcon} 
-                    alt="Collapse" 
-                    className={collapsedContainers[title] ? styles.collapseIconExpanded : styles.collapseIconCollapsed}
+                <button
+                  className={styles.expandChecklist}
+                  onClick={() => toggleCollapseContainer(title)}
+                >
+                  <img
+                    src={collapseIcon}
+                    alt="Collapse"
+                    className={
+                      collapsedContainers[title]
+                        ? styles.collapseIconExpanded
+                        : styles.collapseIconCollapsed
+                    }
                   />
                 </button>
               </div>
             </div>
             <div className={styles.cardsContainer}>
-              {getFilteredTasks().filter(task => task.status === title).map((task, index) => (
-                <Cards key={index} card={task} moveCard={moveCard} deleteTask={deleteTask} isChecklistExpanded={!collapsedContainers[title]} openTaskModal={openTaskModal} />
-              ))}
+              {getFilteredTasks()
+                .filter((task) => task.status === title)
+                .map((task, index) => (
+                  <Cards
+                    key={index}
+                    card={task}
+                    moveCard={moveCard}
+                    deleteTask={deleteTask}
+                    isChecklistExpanded={!collapsedContainers[title]}
+                    openTaskModal={openTaskModal}
+                  />
+                ))}
             </div>
           </div>
         ))}
@@ -206,7 +237,9 @@ export default function Board() {
           setEmail={setEmail}
         />
       )}
-      {isTaskModalOpen && <AddTaskModal closeModal={closeTaskModal} taskToEdit={taskToEdit} />}
+      {isTaskModalOpen && (
+        <AddTaskModal closeModal={closeTaskModal} taskToEdit={taskToEdit} />
+      )}
     </>
   );
 }

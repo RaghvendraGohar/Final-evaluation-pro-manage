@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+
 .modal {
   position: fixed;
   top: 0;
@@ -12,11 +17,10 @@
 
 .modalContent {
   background: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
+  padding: 23px;
+  border-radius: 22px;
+  width: 42.5%;
+  height: 58.2%;
   position: relative; /* Ensure relative positioning to contain absolute elements */
 }
 
@@ -26,30 +30,119 @@
   align-items: center;
 }
 
+.modalHeader h2{
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0.5px;
+text-align: left;
+
+}
+
 .required {
   color: red;
 }
 
+.modalHeaderInput{
+  font-family: Inter;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.5px;
+text-align: left;
+color: #9B959F;
+position:absolute;
+top: 10%;
+border: 1px solid #E2E2E2;
+border-radius: 4px;
+height: 7.4%;
+width: 89.5%;
+padding-left: 15px;
+}
+
 .modalRow {
-  margin-top: 20px;
+  margin-top: 7%;
   position: relative; /* Ensure relative positioning for dropdown */
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0.5px;
+text-align: left;
 }
 
 .priorityButtons {
   display: flex;
-  gap: 10px;
+  gap: 28px;
+  position: absolute;
+  top: 8%;
+  left: 20%;
 }
 
 .priorityButton {
+  display: flex;
+  align-items: center; /* Center items vertically */
   padding: 5px 10px;
-  border: none;
+  border: 1px solid #E2E2E2;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 8px;
+  color: #767575;
+  background-color: white;
+}
+
+.priorityDot {
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.high-priority {
+  background-color: #FF2473 !important;
+}
+
+.moderate-priority {
+  background-color: #18B0FF !important;
+}
+
+.low-priority {
+  background-color: #63C05B !important;
 }
 
 .priorityButton.selected {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #EEECEC;
+}
+
+.modalRowA{
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0.5px;
+text-align: left;
+margin-top: 3%;
+}
+
+.modalRowAInpte{
+margin-left: 2%;
+height:2rem;
+width: 84%;
+padding-left: 15px;
+border: 1px solid #E2E2E2;
+border-radius: 4px;
+
+}
+
+.modalRowCheckList{
+  margin-top: 3%;
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 16.94px;
+text-align: left;
+
 }
 
 .checklist {
@@ -64,13 +157,17 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid #E2E2E2;
+  border-radius: 12px;
+  height: 2rem;
+  width: 96.8%;
+  padding-left: 11px;
 }
 
 .checklistItemText {
   border: none;
   outline: none;
+  width: 91%;
 }
 
 .checklistItemText:focus {
@@ -78,13 +175,31 @@
   outline: none;
 }
 
-.dueDateButton {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #f0f0f0;
+.checklistItemDelete{
+  background: none;
+  border: none;
   cursor: pointer;
 }
+
+.checklistItemDeleteIcon{
+  height: 15px;
+    width: 15px;
+}
+
+.addListButton{
+  width: 12%;
+  background-color: white;
+  border: none;
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 19.36px;
+text-align: center;
+color: #767575;
+cursor: pointer;
+}
+
+
 
 .hiddenDateInput {
   position: absolute;
@@ -94,23 +209,18 @@
   height: 0;
 }
 
-.modalFooter {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
-}
 
 .dropdown {
   position: absolute;
-  top: 100%; /* Position it right below the input field */
-  left: 0;
+  top: 38%; /* Position it right below the input field */
+  left: 15%;
   background: white;
-  border: 1px solid #ccc;
+  border: 1px solid #7E7A7A14;
+  border-radius: 4px;
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
-  width: 100%;
+  width: 80%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for better visibility */
 }
 
@@ -122,6 +232,27 @@
   cursor: pointer;
 }
 
+.dropdownItem span{
+color: #20102B;
+text-align: left;
+margin-left: 8%;
+}
+
+.dropdownItem button{
+  font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+border: 1px solid #E2E2E2;
+background-color: white;
+border-radius: 8px;
+color: #767575;
+margin-left: 42%;
+cursor: pointer;
+}
+
+
 .dropdownItem:hover {
   background-color: #f0f0f0;
 }
@@ -129,12 +260,88 @@
 .circle {
   background-color: #FFEBEB;
   color: #000000;
-  width: 30px;
-  height: 30px;
+  width: 41px;
+  height: 41px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   margin-right: 10px;
-  font-weight: bold;
+  font-family: DM Sans;
+font-size: 19px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.5px;
+text-align: left;
+
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between; /* Ensures due date button is left-aligned and actions are right-aligned */
+  align-items: center; /* Aligns items vertically in the middle */
+  margin-top: 18%;
+  margin-right: 2%;
+}
+
+.modalRowDue {
+  display: flex;
+  align-items: center;
+}
+
+.dueDateButton {
+  padding: 10px;
+  border: 1px solid #E2E2E2;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+  text-align: center;
+  display: relative;
+  color: #707070;
+}
+
+.hiddenDateInput {
+  display: flex; /* Assuming this is used for handling date selection but hidden visually */
+  position: relative;
+  /* top: -160%; /* Adjust the value based on your layout */
+  /* left: 0 */
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.modalFooterActions {
+  display: flex;
+  gap: 10px; /* Adjusts space between cancel and save buttons */
+  width: 55%;
+}
+
+.modalFooter button {
+  padding: 10px;
+  font-family: Poppins;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.modalFooterCancle {
+  background-color: white;
+  border: 1px solid #CF3636;
+  color: #CF3636;
+  cursor: pointer;
+}
+
+.modalFooterSave {
+  border: none;
+  background-color: #17A2B8;
+  color: white;
+  cursor: pointer;
 }

@@ -16,6 +16,7 @@ const Cards = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const menuRef = useRef(null);
+  const userEmail = localStorage.getItem('email');
 
   useEffect(() => {
     setIsChecklistExpanded(isChecklistExpandedProp);
