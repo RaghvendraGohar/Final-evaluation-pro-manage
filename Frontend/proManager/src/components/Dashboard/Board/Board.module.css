@@ -1,11 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+.welcomeHeading{
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 33px;
+  text-align: left;
+  position: relative;
+  top: -4%;  
+}
+
 .headConatiner {
   position: relative;
   top: 1%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+h1{
+  margin-left: 0.3%;
+  margin-top: 2.5%;
 }
 
 .addPeople {
@@ -16,9 +30,10 @@
   text-align: left;
   width: 8%;
   position: absolute;
-  left: 22%;
-  top: 4%;
+  left: 8%;
+    top: 63%;
   cursor: pointer;
+  color: #707070;
 }
 
 .addPeopleIcon {
@@ -36,24 +51,72 @@
   width: 9%;
   position: relative;
   left: 90%;
+  color: #707070;
 }
 
 .boardContainer {
   display: flex;
   overflow-x: auto;
+  margin-top: 3%;
+  width: 100%;
+}
+.boardContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.boardContainer::-webkit-scrollbar-thumb {
+  background-color: #9CB7C5;
+  border-radius: 10px;
+}
+
+.boardContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #7A9CA5;
+}
+
+.boardContainer::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.boardContainer::-webkit-scrollbar-button {
+  display: none; /* Hides the scrollbar arrows */
 }
 
 .column {
-    margin-top: 1%;
-  min-width: 250px;
-  height: 550px; /* Increased height */
+  margin-top: 1%;
+  flex: 0 0 23.9%;
+  height: 25.7rem;
   background-color: #EEF2F5; /* Background color */
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-right: 10px;
-  padding: 10px;
+  padding: 25px;
   position: relative;
   overflow: auto;
+}
+
+.column::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.column::-webkit-scrollbar-thumb {
+  background-color: #9CB7C5;
+  border-radius: 10px;
+}
+
+.column::-webkit-scrollbar-thumb:hover {
+  background-color: #7A9CA5;
+}
+
+.column::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.column::-webkit-scrollbar-button {
+  display: none; /* Hides the scrollbar arrows */
 }
 
 .columnHeader {
@@ -62,6 +125,7 @@
   align-items: center;
   font-family: Poppins;
   font-weight: 600;
+  margin-bottom: 5%;
 }
 
 .iconContainer {
@@ -85,6 +149,8 @@
 .plusIcon {
   width: 20px;
   cursor: pointer;
+  position: relative;
+    left: -35%;
 }
 .collapseIconExpanded{
 width: 18px;

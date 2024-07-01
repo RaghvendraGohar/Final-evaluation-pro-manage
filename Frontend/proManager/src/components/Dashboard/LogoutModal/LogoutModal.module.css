@@ -1,46 +1,73 @@
 /* LogoutModal.module.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modalContent {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .modalActions {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center align items */
-    margin-top: 20px;
-  }
-  
-  .logoutButton {
-    background-color: #009688;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 10px; /* Add margin between buttons */
-  }
-  
-  .cancelButton {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 21.4%;
+  height: 19.5%;
+}
+
+h2 {
+  font-family: Noto Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19.07px;
+  text-align: center;
+}
+
+.modalActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  height: 145%;
+}
+
+.logoutButton {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0px 2px 12px 0px #82698c33;
+  cursor: pointer;
+  margin-bottom: 10px;
+  height: 22.5% !important;
+  width: 89.5%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
+}
+
+.cancelButton {
+  background-color: white;
+  color: #cf3636;
+  border-color: #cf3636;
+  box-shadow: 0px 2px 12px 0px #82698c33;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  height: 22.5%;
+  width: 89.5%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
+}

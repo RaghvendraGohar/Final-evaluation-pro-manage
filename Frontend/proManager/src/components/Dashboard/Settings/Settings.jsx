@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { updateUser } from "../../../api/auth"; // Adjust the path as necessary
+import { updateUser } from "../../../api/auth";
 import styles from "./Settings.module.css";
+import mail from "../../../assets/email.png";
+import lock from "../../../assets/lock.png";
+import hide from "../../../assets/hide.png";
+import see from "../../../assets/see.png";
+import nameIcon from "../../../assets/nameIcon.png";
 
 export default function Settings() {
   const [name, setName] = useState('');
@@ -9,6 +14,7 @@ export default function Settings() {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [userId, setUserId] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,38 +26,44 @@ export default function Settings() {
     }
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       const response = await updateUser(userId, name, email, oldPassword, newPassword);
       console.log(response);
-      // Show success message or update UI as necessary
       setName('');
       setEmail('');
       setOldPassword('');
       setNewPassword('');
       if (email || (oldPassword && newPassword)) {
-        localStorage.removeItem('userId'); // Clear user info from local storage
+        localStorage.removeItem('userId');
         localStorage.removeItem('userName');
-        navigate('/login'); // Redirect to login page
+        navigate('/login');
       }
     } catch (error) {
       console.error(error);
     }
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState);
   };
 
   return (
     <>
       <h1>Settings</h1>
       <div className={styles.formContainer}>
-        <form onSubmit={handleSubmit}>
-          <input 
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div>
+          <img src={nameIcon} alt="nameIcon" className={styles.icons} />
+            <input 
             type="text" 
             placeholder="Name" 
             className={styles.formInput}
             value={name}
             onChange={(e) => setName(e.target.value)} 
           />
+          </div>
+          <div>
+          <img src={mail} alt="mail" className={styles.icons} />
           <input 
             type="email" 
             placeholder="Update Email" 
@@ -59,22 +71,52 @@ export default function Settings() {
             value={email}
             onChange={(e) => setEmail(e.target.value)} 
           />
+          </div>
+          
+          <div>
+          <img src={lock} alt="lock" className={styles.icons} />
           <input 
-            type="password" 
+            type={showPassword ? "text" : "password"} 
             placeholder="Old Password" 
             className={styles.formInput}
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)} 
           />
-          <input 
-            type="password" 
+          <img
+              src={showPassword ? hide : see}
+              alt={showPassword ? "Hide password" : "Show password"}
+              className={styles.icon1}
+              onClick={togglePasswordVisibility}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+          
+          <div>
+          <img src={lock} alt="lock" className={styles.icons} />
+            <input 
+            type={showPassword ? "text" : "password"} 
             placeholder="New Password" 
             className={styles.formInput}
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)} 
           />
-          <button type="submit" className={styles.updateButton}>Update</button>
+          <img
+              src={showPassword ? hide : see}
+              alt={showPassword ? "Hide password" : "Show password"}
+              className={styles.icon1}
+              onClick={togglePasswordVisibility}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+          
         </form>
+        <button 
+          type="button" 
+          className={styles.updateButton} 
+          onClick={handleSubmit}
+        >
+          Update
+        </button>
       </div>
     </>
   );

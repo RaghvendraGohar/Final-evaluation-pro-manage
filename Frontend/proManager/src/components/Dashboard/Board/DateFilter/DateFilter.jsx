@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from "./DateFilter.module.css";
+import downArrow from "../../../../assets/downArrow.png"
 
 export default function DateFilter({ setFilter }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function DateFilter({ setFilter }) {
   return (
     <div className={styles.dateFilter}>
       <button className={styles.dropdownButton} onClick={toggleDropdown}>
-        {selectedOption} ▼
+        {selectedOption} <img src={downArrow} alt="downArrow" className={styles.icons} />
       </button>
       {isOpen && (
         <div className={styles.dropdownMenu}>

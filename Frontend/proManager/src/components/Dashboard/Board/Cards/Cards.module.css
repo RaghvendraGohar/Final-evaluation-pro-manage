@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 .card {
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 20px;
+  padding: 23px;
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
   position: relative;
@@ -10,45 +14,78 @@
 
 .cardHeader {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
 
+.priority{
+  display: flex;
+  align-items: center;
+}
+
 .priorityIndicator {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
 .highpriority {
-  background-color: red;
+  background-color: #FF2473;
 }
 
 .moderatepriority {
-  background-color: blue;
+  background-color: #18B0FF;
 }
 
 .lowpriority {
-  background-color: green;
+  background-color: #63C05B;
 }
 
 .priorityName {
+  font-family: Poppins;
+font-size: 8px;
+font-weight: 500;
+line-height: 12px;
+text-align: left;
+color: #707070;
+width: 100%;
+
+}
+
+.assignUserIndicator {
+  
+  background-color: #DBDBDB;
+  color: #5A5A5A;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  height: auto;
+  border-radius: 50%;
+  font-size: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cardMenu {
   cursor: pointer;
   position: relative;
+  font-size: 25px;
+  min-width: 20px;
 }
 
 .menuPopup {
   position: absolute;
-  top: 20px;
-  right: 0;
+  top: 55px;
+    right: 25px;
   background: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   z-index: 10;
 }
@@ -61,13 +98,34 @@
   text-align: left;
   cursor: pointer;
 }
+.menuPopupButton{
+  font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+
+}
+.menuPopupButtonD{
+  font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+color: #CF3636;
+}
 
 .menuPopup button:hover {
   background-color: #f0f0f0;
 }
 
 .cardTitle {
-  font-weight: 600;
+  font-family: Poppins;
+font-size: 18px;
+font-weight: 500;
+line-height: 27px;
+text-align: left;
+
   margin: 10px 0;
 }
 
@@ -75,12 +133,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 16.94px;
+text-align: left;
+
 }
 
 .expandChecklist {
-  background: none;
+  background-color: #EEECEC;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
+}
+.checklistArrow{
+  width: 15px;
+  height: 10px;
 }
 
 .checklistItems {
@@ -88,11 +157,25 @@
   padding: 0;
   margin: 10px 0;
 }
+.checklistItems input[type="checkbox"]:checked {
+  background-color: #17A2B8; /* Change background color when checked */
+}
 
 .checklistItems li {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  border: 1px solid #E2E2E2;
+  border-radius: 12px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Inter;
+font-size: 14px;
+font-weight: 400;
+line-height: 16.94px;
+text-align: left;
+
 }
 
 .checklistItems input[type="checkbox"] {
@@ -103,6 +186,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10%;
 }
 
 .dateIndicator {
@@ -110,18 +194,27 @@
   color: #888;
   border: none;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 8px;
   cursor: default;
   pointer-events: none;
 }
 
 .cardActions button {
-  background: none;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  background: #EEECEC;
   margin-left: 5px;
+  border: none;
   cursor: pointer;
+  border-radius: 8px;
+  font-family: Poppins;
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 12px;
+  text-align: left;
+padding: 5px;  
+color: #767575;
 }
+
+/* ///////////////////////////////////////////////////////// */
 
 .modal {
   position: fixed;
@@ -137,27 +230,60 @@
 }
 
 .modalContent {
-  background: white;
+  background-color: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
+  text-align: center;
+  width: 21.4%;
+  height: 19.5%;
+}
+
+.modalContent h2{
+  font-family: Noto Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19.07px;
   text-align: center;
 }
 
+.modalActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  height: 145%;
+}
+
 .deleteButton {
-  background: red;
+  background-color: #17a2b8;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-right: 10px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 12px 0px #82698c33;
   cursor: pointer;
-  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 22.5% !important;
+  width: 89.5%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
 }
 
 .cancelButton {
-  background: gray;
-  color: white;
-  border: none;
+  background-color: white;
+  color: #cf3636;
+  border-color: #cf3636;
+  box-shadow: 0px 2px 12px 0px #82698c33;
   padding: 10px 20px;
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 5px;
+  height: 22.5%;
+  width: 89.5%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
 }
+

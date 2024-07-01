@@ -31,15 +31,15 @@ export default function AddPeople({ step, email, closeModal, handleNextStep, set
               onChange={(e) => setEmail(e.target.value)}
             />
             {error && <p className={styles.error}>{error}</p>}
-            <div>
-              <button onClick={closeModal}>Cancel</button>
-              <button onClick={handleAddEmail}>Add Email</button>
+            <div className={styles.buttonContainer}>
+              <button className={styles.cancle} onClick={closeModal}>Cancel</button>
+              <button className={styles.addEmail} onClick={handleAddEmail}>Add Email</button>
             </div>
           </>
         ) : (
           <>
-            <p>{email} added to board</p>
-            <button onClick={closeModal}>Okay, got it!</button>
+            <p className={styles.confirmText}>{email} added to board</p>
+            <button className={styles.okButton} onClick={closeModal}>Okay, got it!</button>
           </>
         )}
       </div>

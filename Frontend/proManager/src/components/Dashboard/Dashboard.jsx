@@ -49,32 +49,41 @@ export default function Dashboard() {
     <div className={styles.app}>
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-          <img src={codesandbox} alt="codesandbox" className={styles.sidebarIcon} />
+          <img src={codesandbox} alt="codesandbox" className={styles.sidebarIconH} />
           <span className={styles.sidebarHeading}>Pro Manage</span>
         </div>
         <div className={styles.sidebarMenu}>
-          <div className={styles.sidebarItem} onClick={() => handleClick("Board")}>
+          <div
+            className={`${styles.sidebarItem} ${content === "Board" ? styles.active : ""}`}
+            onClick={() => handleClick("Board")}
+          >
             <img src={layout} alt="layout" className={styles.sidebarIcon} />
             <span className={styles.sidebarText}>Board</span>
           </div>
-          <div className={styles.sidebarItem} onClick={() => handleClick("Analytics")}>
+          <div
+            className={`${styles.sidebarItem} ${content === "Analytics" ? styles.active : ""}`}
+            onClick={() => handleClick("Analytics")}
+          >
             <img src={database} alt="database" className={styles.sidebarIcon} />
             <span className={styles.sidebarText}>Analytics</span>
           </div>
-          <div className={styles.sidebarItem} onClick={() => handleClick("Settings")}>
+          <div
+            className={`${styles.sidebarItem} ${content === "Settings" ? styles.active : ""}`}
+            onClick={() => handleClick("Settings")}
+          >
             <img src={vector} alt="vector" className={styles.sidebarIcon} />
             <span className={styles.sidebarText}>Settings</span>
           </div>
         </div>
         <button className={styles.logoutButton} onClick={() => handleClick("Log out")}>
-          <img src={logout} alt="logout" className={styles.sidebarIcon} />
+          <img src={logout} alt="logout" className={styles.logoutIcon} />
           Log out
         </button>
       </div>
       <div className={styles.content}>
         {renderContent()}
       </div>
-      
+
       <LogoutModal show={showLogoutModal} onClose={handleCloseModal} onLogout={handleLogout} />
     </div>
   );

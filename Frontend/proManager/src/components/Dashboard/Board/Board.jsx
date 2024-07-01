@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import styles from "./Board.module.css";
 import addPeopleI from "../../../assets/addPeople.png";
 import AddPeople from "./AddPeopleModal/AddPeople";
@@ -126,34 +125,31 @@ export default function Board() {
     futureWeek.setDate(today.getDate() + 7);
     pastMonth.setDate(today.getDate() - 30);
     futureMonth.setDate(today.getDate() + 30);
-
-    if (filter === 'Today') {
-      return tasks.filter(task => {
-        const dueDate = new Date(task.dueDate);
-        return dueDate.toDateString() === today.toDateString();
-      });
-    }
-
-    if (filter === 'This Week') {
-      return tasks.filter(task => {
-        const dueDate = new Date(task.dueDate);
-        return dueDate >= pastWeek && dueDate <= futureWeek;
-      });
-    }
-
-    if (filter === 'This Month') {
-      return tasks.filter(task => {
-        const dueDate = new Date(task.dueDate);
-        return dueDate >= pastMonth && dueDate <= futureMonth;
-      });
-    }
-
-    return tasks;
+  
+    return tasks.filter(task => {
+      const dueDate = task.dueDate ? new Date(task.dueDate) : null;
+  
+      if (filter === 'Today') {
+        return dueDate && dueDate.toDateString() === today.toDateString();
+      }
+  
+      if (filter === 'This Week') {
+        return dueDate && dueDate >= pastWeek && dueDate <= futureWeek;
+      }
+  
+      if (filter === 'This Month') {
+        return dueDate && dueDate >= pastMonth && dueDate <= futureMonth;
+      }
+  
+      // Include tasks with no due date
+      return !dueDate;
+    });
   };
 
   return (
     <>
       <div className={styles.dateDisplay}>{getCurrentDate()}</div>
+      <div className={styles.welcomeHeading}>Welcome! {localStorage.getItem('userName')}</div>
       <div className={styles.headConatiner}>
         <h1>Board</h1>
         <div>
