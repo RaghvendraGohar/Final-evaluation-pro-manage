@@ -178,6 +178,9 @@ margin-right: 2%;
   .header {
    display: flex;
   }
+  .header h1{
+    margin-top: 1%;
+  }
 
   .heroSection {
     font-size: 1.2em;
