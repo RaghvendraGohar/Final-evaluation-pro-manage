@@ -25,7 +25,7 @@ export const createTask = async (req, res) => {
       const newTask = new Task({
         title,
         priority,
-        assignUserId: assignUserId ? new mongoose.Types.ObjectId(assignUserId) : null,
+        assignUserId: assignUserId,
         checklist,
         dueDate: dueDate ? new Date(dueDate) : null,
         status: 'To do', // Default status
