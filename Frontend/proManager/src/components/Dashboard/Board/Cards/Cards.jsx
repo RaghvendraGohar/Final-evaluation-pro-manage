@@ -179,7 +179,13 @@ const Cards = ({
         </ul>
       )}
       <div className={styles.cardFooter}>
-        <button className={styles.dateIndicator} style={getDueDateStyles()}>
+        <button
+          className={styles.dateIndicator}
+          style={{
+            ...getDueDateStyles(),
+            visibility: card.dueDate ? "visible" : "hidden"
+          }}
+        >
           {card.dueDate ? getDueDateText() : "No due date"}
         </button>
         <div className={styles.cardActions}>

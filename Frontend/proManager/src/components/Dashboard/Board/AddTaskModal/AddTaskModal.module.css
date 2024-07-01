@@ -303,6 +303,9 @@ text-align: left;
   display: relative;
   color: #707070;
 }
+.invisible {
+  visibility: hidden;
+}
 
 .hiddenDateInput {
   display: flex; /* Assuming this is used for handling date selection but hidden visually */
